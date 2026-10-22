@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "needs_review",
+  "presetUpdated": "2026-10-21",
+  "notice": "当前只支持小红书图文和抖音图文，均采用3:4设计预设；平台差异在生图前的标题、信息量与构图，不是结果裁切。安全框为通用设计建议，非官方规格。",
+  "variants": [
+    {
+      "id": "xhs",
+      "placement": "xhs-note",
+      "style": "03",
+      "title": "AI智能体到底是啥？",
+      "sourceSize": [
+        1086,
+        1448
+      ],
+      "targetSize": [
+        1080,
+        1440
+      ],
+      "status": "needs_review",
+      "needs_relayout": false,
+      "warnings": [],
+      "previews": [
+        {
+          "name": "3:4整图与安全区",
+          "ratio": [
+            3,
+            4
+          ],
+          "crop": [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ],
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

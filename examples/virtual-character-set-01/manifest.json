@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "set": "virtual-character-set-01",
+  "platform": "xhs-note",
+  "tool": "built-in image_gen",
+  "ratio": [
+    3,
+    4
+  ],
+  "targetSize": [
+    1080,
+    1440
+  ],
+  "userApproval": "pending",
+  "reviewScope": [
+    "逐张目视检查标题与辅助文案",
+    "检查固定人物的脸部、服装与画风",
+    "检查无账号名称或署名",
+    "检查无大面积蓝色背景"
+  ],
+  "notCovered": [
+    "真实平台上传展示",
+    "自动OCR",
+    "精确区域坐标标注与自动安全区检测",
+    "抖音图文版本",
+    "用户审美确认"
+  ],
+  "references": [
+    {
+      "file": "references/character-master.png",
+      "role": "人物身份和笔触母版"
+    },
+    {
+      "file": "references/palette-reference.png",
+      "role": "无署名浅色版配色和质感参考，不复用构图"
+    }
+  ],
+  "covers": [
+    {
+      "id": "01",
+      "style": "爆款大字压顶风",
+      "title": "用 AI / 把想法做成产品",
+      "file": "01-big-title.png",
+      "prompt": "prompts/01-big-title.md",
+      "status": "reviewed",
+      "reviewNotes": "标题较满，部分字效接近基础边距；未检查平台上传展示。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "f81364cff5e0e51777f285ad9dd1450b0f18ee796bd59634d478ea08da0680ad"
+    },
+    {
+      "id": "02",
+      "style": "巨字拆分冲击风",
+      "title": "AI / 做产品 / 从想法开始",
+      "file": "02-giant-word-impact.png",
+      "prompt": "prompts/02-giant-word-impact.md",
+      "status": "reviewed",
+      "reviewNotes": "巨字与底部文案靠近边缘；保留冲击型构图。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "309e2dd70eedfb603149467290caf12dd0cfb980bb43bdd7b02670b22b7cef2d"
+    },
+    {
+      "id": "03",
+      "style": "小白科普问答风",
+      "title": "AI做产品 / 从哪开始？",
+      "file": "03-beginner-qa.png",
+      "prompt": "prompts/03-beginner-qa.md",
+      "status": "reviewed",
+      "reviewNotes": "问题标题较满，问号装饰多于提示词预期。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "6d448e6f96fcee9aed94867d4d12e5e5379a9ebc0d15aa7dbc50c29a9d324cfa"
+    },
+    {
+      "id": "04",
+      "style": "教程清单风",
+      "title": "把想法 / 做成产品",
+      "file": "04-tutorial-checklist.png",
+      "prompt": "prompts/04-tutorial-checklist.md",
+      "status": "reviewed",
+      "reviewNotes": "步骤卡片突出，蓝色勾选；未提供真实软件截图。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "06ecb11ab1029fc2f75cbcdba56ae5aac52461e9f7f12381c7e0f199512eea14"
+    },
+    {
+      "id": "05",
+      "style": "产品测评榜单风",
+      "title": "AI工具怎么选？ / 3个维度",
+      "file": "05-product-comparison.png",
+      "prompt": "prompts/05-product-comparison.md",
+      "status": "reviewed",
+      "reviewNotes": "3仅计数用途、成本、可控性三个选型维度，不代表产品评分或排名。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "4cfc92d8a88df1ec5c5434001f556218677713ec905d43f5e4e04b0d281a47e3"
+    },
+    {
+      "id": "06",
+      "style": "种草推荐风",
+      "title": "想做个产品？ / 试试AI辅助",
+      "file": "06-warm-recommendation.png",
+      "prompt": "prompts/06-warm-recommendation.md",
+      "status": "reviewed",
+      "reviewNotes": "浅色生活场景中出现少量自然绿色植物，与提示词的严格装饰色限制有偏差。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "03ac5e1c03985cfdc7ffdf116ad63849683e78a8778b7db5e1283656f3124be6"
+    },
+    {
+      "id": "07",
+      "style": "贴纸拼贴入门风",
+      "title": "用AI做产品 / 从这里入门",
+      "file": "07-sticker-beginner.png",
+      "prompt": "prompts/07-sticker-beginner.md",
+      "status": "reviewed",
+      "reviewNotes": "四张卡片构成入门结构，未使用真实产品界面或Logo。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "93b2d6d0b7b0340b39203ae78e14ad25eb8ea5378e21634b32178876c8d9a47b"
+    },
+    {
+      "id": "08",
+      "style": "黑底效率工作流风",
+      "title": "AI产品工作流",
+      "file": "08-dark-workflow.png",
+      "prompt": "prompts/08-dark-workflow.md",
+      "status": "reviewed",
+      "reviewNotes": "中性炭黑底、黄色标题及勾选，不是蓝色背景。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "cde4c3da24d56cd3f58ed37ce8ade3c893ac947af61665f79343dfc0e97428df"
+    },
+    {
+      "id": "09",
+      "style": "极简知识专栏风",
+      "title": "先想清楚 / 再动手做",
+      "file": "09-minimal-column.png",
+      "prompt": "prompts/09-minimal-column.md",
+      "status": "reviewed",
+      "reviewNotes": "标题无漫画描边，人物退居辅助；实际人物占比仍大于提示词预期。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "0ff87b46c22b289509af60cd6c2bd4ea58982b5c0555eb3c2841ca480445d749"
+    },
+    {
+      "id": "10",
+      "style": "专业科技测评风",
+      "title": "AI开发工具 / 怎么选？",
+      "file": "10-professional-tech.png",
+      "prompt": "prompts/10-professional-tech.md",
+      "status": "reviewed",
+      "reviewNotes": "主产品为生成的概念笔记本，整体保留插画质感；明确标注概念示意，不是实测或真实产品界面。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "7eeecbbae4f35be0c9a10ba235340a4bb41256fb76322e2067aaab294c9a2a03"
+    },
+    {
+      "id": "11",
+      "style": "真实生活记录风",
+      "title": "把想法写下来",
+      "file": "11-life-journal.png",
+      "prompt": "prompts/11-life-journal.md",
+      "status": "reviewed",
+      "reviewNotes": "摄影质感的生成桌面与插画人物拼贴，明确标注场景示意；不是用户真实工作环境照片。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "fcdb87654d64934b2790dfa3699ccb93d080c20032aae88a63b2aa57013dab61"
+    },
+    {
+      "id": "12",
+      "style": "数据分析报告风",
+      "title": "从想法到产品 / 先理清这条路",
+      "file": "12-analysis-report.png",
+      "prompt": "prompts/12-analysis-report.md",
+      "status": "reviewed",
+      "reviewNotes": "采用需求、原型、开发的定性流程，无统计数据；实际字重和描边比提示词预期更强。",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "ab872a2ca29e6d81f6cc7a3aaa73193b9b3ed5958e8e1a16f5585a9eb05eb20f"
+    }
+  ]
+}

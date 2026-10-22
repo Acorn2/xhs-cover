@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-21",
+  "notice": "当前只支持小红书图文和抖音图文，均采用3:4设计预设；平台差异在生图前的标题、信息量与构图，不是结果裁切。安全框为通用设计建议，非官方规格。",
+  "placements": {
+    "xhs-note": {
+      "name": "小红书图文",
+      "ratio": [
+        3,
+        4
+      ],
+      "size": [
+        1080,
+        1440
+      ],
+      "titleChars": [
+        4,
+        12
+      ],
+      "maxTitleLines": 2,
+      "safe": [
+        0.05,
+        0.05,
+        0.9,
+        0.9
+      ],
+      "overlays": [],
+      "previews": [
+        {
+          "name": "3:4整图与安全区",
+          "ratio": [
+            3,
+            4
+          ]
+        }
+      ],
+      "generationStrategy": {
+        "goal": "清楚表达可收藏和复用的内容价值",
+        "titleApproach": "主题/问题与具体用途，保留必要关键词",
+        "supportingLabels": 3,
+        "composition": "主标题与主体结合，围绕主题安排少量步骤、清单或证据",
+        "referenceReuse": "复用人物身份、真实产品素材与视觉识别，按策略独立组织画面"
+      }
+    },
+    "douyin-note": {
+      "name": "抖音图文",
+      "ratio": [
+        3,
+        4
+      ],
+      "size": [
+        1080,
+        1440
+      ],
+      "titleChars": [
+        4,
+        10
+      ],
+      "maxTitleLines": 2,
+      "safe": [
+        0.05,
+        0.05,
+        0.9,
+        0.9
+      ],
+      "overlays": [],
+      "previews": [
+        {
+          "name": "3:4整图与安全区",
+          "ratio": [
+            3,
+            4
+          ]
+        }
+      ],
+      "generationStrategy": {
+        "goal": "一眼识别一个核心问题或卖点",
+        "titleApproach": "更短的问题/反差/场景钩子，事实保持一致",
+        "supportingLabels": 1,
+        "composition": "放大一个人物或产品锚点，减少清单和小卡片，形成单一视线落点",
+        "referenceReuse": "复用身份与素材，重新确定标题与视觉焦点；不直接裁切小红书成品"
+      }
+    }
+  }
+}

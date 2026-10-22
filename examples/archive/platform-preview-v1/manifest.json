@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "topic": "同一张3:4封面的跨平台裁切风险（非适配成品）",
+  "variants": [
+    {
+      "id": "xhs",
+      "placement": "xhs-note",
+      "style": "03",
+      "title": "AI智能体到底是啥？",
+      "image": "../../03-beginner-qa.png",
+      "importantRegions": [
+        {
+          "label": "标题",
+          "box": [
+            0.07,
+            0.06,
+            0.86,
+            0.32
+          ]
+        },
+        {
+          "label": "脸部（人工粗略标注）",
+          "box": [
+            0.34,
+            0.4,
+            0.35,
+            0.25
+          ]
+        }
+      ]
+    },
+    {
+      "id": "douyin-note",
+      "placement": "douyin-note",
+      "style": "03",
+      "title": "AI智能体到底是啥？",
+      "image": "../../03-beginner-qa.png",
+      "importantRegions": [
+        {
+          "label": "标题",
+          "box": [
+            0.07,
+            0.06,
+            0.86,
+            0.32
+          ]
+        },
+        {
+          "label": "脸部（人工粗略标注）",
+          "box": [
+            0.34,
+            0.4,
+            0.35,
+            0.25
+          ]
+        }
+      ]
+    },
+    {
+      "id": "douyin-video",
+      "placement": "douyin-video",
+      "style": "03",
+      "title": "AI智能体到底是啥？",
+      "image": "../../03-beginner-qa.png",
+      "importantRegions": [
+        {
+          "label": "标题",
+          "box": [
+            0.07,
+            0.06,
+            0.86,
+            0.32
+          ]
+        },
+        {
+          "label": "脸部（人工粗略标注）",
+          "box": [
+            0.34,
+            0.4,
+            0.35,
+            0.25
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wechat-head",
+      "placement": "wechat-head",
+      "style": "03",
+      "title": "AI智能体到底是啥？",
+      "image": "../../03-beginner-qa.png",
+      "importantRegions": [
+        {
+          "label": "标题",
+          "box": [
+            0.07,
+            0.06,
+            0.86,
+            0.32
+          ]
+        },
+        {
+          "label": "脸部（人工粗略标注）",
+          "box": [
+            0.34,
+            0.4,
+            0.35,
+            0.25
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wechat-square",
+      "placement": "wechat-square",
+      "style": "03",
+      "title": "AI智能体到底是啥？",
+      "image": "../../03-beginner-qa.png",
+      "importantRegions": [
+        {
+          "label": "标题",
+          "box": [
+            0.07,
+            0.06,
+            0.86,
+            0.32
+          ]
+        },
+        {
+          "label": "脸部（人工粗略标注）",
+          "box": [
+            0.34,
+            0.4,
+            0.35,
+            0.25
+          ]
+        }
+      ]
+    }
+  ]
+}

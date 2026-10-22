@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "topic": "生图后的整图与缩略图检查（历史素材演示）",
+  "variants": [
+    {
+      "id": "xhs",
+      "placement": "xhs-note",
+      "style": "03",
+      "title": "AI智能体到底是啥？",
+      "image": "03-beginner-qa.png",
+      "importantRegions": [
+        {
+          "label": "标题",
+          "box": [
+            0.07,
+            0.06,
+            0.86,
+            0.32
+          ]
+        },
+        {
+          "label": "脸部（人工粗略标注）",
+          "box": [
+            0.34,
+            0.4,
+            0.35,
+            0.25
+          ]
+        }
+      ]
+    }
+  ]
+}
