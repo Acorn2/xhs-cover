@@ -1,4 +1,4 @@
 interface:
-  display_name: "小红书 / 抖音图文封面"
-  short_description: "为小红书与抖音图文分别制定标题、信息密度和构图策略，再输出独立生图提示词"
-  default_prompt: "Use $atutun-xhs-cover to create separate generation briefs and cover prompts for Xiaohongshu image posts and Douyin image posts."
+  display_name: "小红书 / 抖音封面与正文图"
+  short_description: "策划小红书与抖音图文，封面12种风格、正文8种主题与6种布局，独立选型且正文无人物"
+  default_prompt: "Use $atutun-xhs-cover to plan covers, character-free body image series, or complete image posts for Xiaohongshu and Douyin, choosing cover and body templates independently."

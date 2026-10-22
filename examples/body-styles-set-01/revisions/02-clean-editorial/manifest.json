@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "platform": "xhs-note",
+  "source": "source.md",
+  "tool": "built-in imagegen",
+  "pages": [
+    {
+      "theme": "body-clean",
+      "file": "body-clean-v3.png",
+      "prompt": "prompts/body-clean-v2.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "72b490eb716db5e04047ee902e1c50c02d3c05990ba96a44dffc277eea472ea4",
+      "status": "reviewed",
+      "userApproval": "approved",
+      "notes": "已确认使用v3：蓝色小页签、单行较小页首标题、物件线图解与浅冰蓝分区；无大编号横线列表。字重仍偏中黑，保留清楚易读的功能性。",
+      "correction": {
+        "input": "body-clean-v2.png",
+        "prompt": "prompts/body-clean-v3-type.md",
+        "reason": "减小并合并页首标题，减轻小标题字重。"
+      },
+      "approvedOn": "2026-10-22",
+      "approvalScope": "当前样图及该主题的视觉方向；不代表其他布局或平台展示已验收。"
+    },
+    {
+      "theme": "body-editorial",
+      "file": "body-editorial-v2.png",
+      "prompt": "prompts/body-editorial-v2.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "5b63cfa6b50b5d1faeb2485d5c59a46cd70cf627ab09c87c859bc44275791f57",
+      "status": "reviewed",
+      "userApproval": "approved",
+      "notes": "已确认使用v2：宋黑搭配、苔绿暖纸、不等宽分栏与物件主图；与清爽文档的版式明显区分。场景是生成物件示意，非真实照片或产品证据；分栏小字需结合后续实际文稿检查。",
+      "approvedOn": "2026-10-22",
+      "approvalScope": "当前样图及该主题的视觉方向；不代表其他布局或平台展示已验收。"
+    }
+  ],
+  "notCovered": [
+    "手机实机与平台上传",
+    "其他布局或抖音版本"
+  ],
+  "userFeedback": "用户明确确认使用最新版本：清爽文档v3、杂志图解v2。"
+}

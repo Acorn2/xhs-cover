@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "set": "body-styles-set-01",
+  "platform": "xhs-note",
+  "layout": "checklist",
+  "ratio": [
+    3,
+    4
+  ],
+  "targetSize": [
+    1080,
+    1440
+  ],
+  "source": "source.md",
+  "tool": "built-in imagegen",
+  "userFeedback": "用户要求将八款归档至examples；此前明确偏好手绘讲义，并对新增五款表达正面反馈。 用户随后认为清爽文档与杂志图解不好看，已要求优化；用户随后明确确认采用清爽文档v3与杂志图解v2，作为两套主题的当前版本。",
+  "reviewScope": [
+    "已在生成轮次逐张目视核对中文标题、正文、编号和标点",
+    "检查正文无人物、头像、手部、吉祥物、署名与水印",
+    "新增五套采用已局部修正的最终版本",
+    "本轮复制前后比较原图字节与SHA-256，保留原生成目录",
+    "清爽文档与杂志图解已重新设计并目视核对；已获用户确认并作为当前版本展示，旧图和提示词在history保留。"
+  ],
+  "notCovered": [
+    "手机实机与平台上传展示",
+    "抖音图文独立生成",
+    "六种布局的完整组合及连续多页系列",
+    "自动OCR或精确安全区坐标测量"
+  ],
+  "pages": [
+    {
+      "id": "01",
+      "theme": "body-clean",
+      "name": "清爽文档",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "revisions/02-clean-editorial/body-clean-v3.png",
+      "prompt": "revisions/02-clean-editorial/prompts/body-clean-v2.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "72b490eb716db5e04047ee902e1c50c02d3c05990ba96a44dffc277eea472ea4",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "clean-editorial-redesign-02",
+      "references": [],
+      "reviewNotes": "已确认使用v3：蓝色小页签、单行较小页首标题、物件线图解与浅冰蓝分区；无大编号横线列表。字重仍偏中黑，保留清楚易读的功能性。",
+      "finalVersion": 3,
+      "history": [
+        {
+          "file": "body-clean.png",
+          "prompt": "prompts/body-clean.md",
+          "actualSize": [
+            1086,
+            1448
+          ],
+          "sha256": "3e298893e6d7f035e329a5c086d7ded61e6bc23f0b16dda22b2620170f715015",
+          "reviewNotes": "白底、蓝色编号、无衬线正文；标题和编号偏重，末行接近底部。",
+          "sourceRun": "body-checklist-theme-test-01",
+          "finalVersion": 1,
+          "feedback": "用户认为效果不好看，要求优化；原图与原提示词保留。"
+        }
+      ],
+      "userApproval": "approved",
+      "candidate": false,
+      "correction": {
+        "version": 3,
+        "input": "revisions/02-clean-editorial/body-clean-v2.png",
+        "prompt": "revisions/02-clean-editorial/prompts/body-clean-v3-type.md",
+        "reason": "将两行巨大页首标题改为单行并减小，减轻小标题字重；保留文案和物件图解。"
+      },
+      "approvedOn": "2026-10-22",
+      "approvalScope": "当前样图及该主题的视觉方向；不代表其他布局或平台展示已验收。"
+    },
+    {
+      "id": "02",
+      "theme": "body-sketch",
+      "name": "手绘讲义",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "body-sketch.png",
+      "prompt": "prompts/body-sketch.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "b9e01a0b44457e2702b440e5e4b127bff7d3a95652c60e3cfb7017e2f8955d12",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "body-checklist-theme-test-01",
+      "references": [],
+      "reviewNotes": "米白纸纹、蓝色手绘圈、橙色标记；主题差异最明显，标题仍可收敛。",
+      "finalVersion": 1
+    },
+    {
+      "id": "03",
+      "theme": "body-editorial",
+      "name": "杂志图解",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "revisions/02-clean-editorial/body-editorial-v2.png",
+      "prompt": "revisions/02-clean-editorial/prompts/body-editorial-v2.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "5b63cfa6b50b5d1faeb2485d5c59a46cd70cf627ab09c87c859bc44275791f57",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "clean-editorial-redesign-02",
+      "references": [],
+      "reviewNotes": "已确认使用v2：宋黑搭配、苔绿暖纸、不等宽分栏与物件主图；与清爽文档的版式明显区分。场景是生成物件示意，非真实照片或产品证据；分栏小字需结合后续实际文稿检查。",
+      "finalVersion": 2,
+      "history": [
+        {
+          "file": "body-editorial.png",
+          "prompt": "prompts/body-editorial.md",
+          "actualSize": [
+            1086,
+            1448
+          ],
+          "sha256": "ef777982d0cd236debaa33cc433ef0cbc6a415223595c068af2faf2bc0e6deb3",
+          "reviewNotes": "暖白底、砖红编号、灰色说明；目前与清爽版结构较接近，杂志感仍有加强空间。",
+          "sourceRun": "body-checklist-theme-test-01",
+          "finalVersion": 1,
+          "feedback": "用户认为效果不好看，要求优化；原图与原提示词保留。"
+        }
+      ],
+      "userApproval": "approved",
+      "candidate": false,
+      "approvedOn": "2026-10-22",
+      "approvalScope": "当前样图及该主题的视觉方向；不代表其他布局或平台展示已验收。"
+    },
+    {
+      "id": "04",
+      "theme": "body-duotone-print",
+      "name": "清透双色文艺印刷",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "body-duotone-print.png",
+      "prompt": "prompts/body-duotone-print.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "4b0fb2dd326dbad953188d6864cb36e380155ba7377c3fbeb3d74d93bb0c86fd",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "body-checklist-new-styles-01",
+      "references": [
+        {
+          "file": "references/body-duotone-print.png",
+          "role": "仅控制字形、笔触、配色和材质，不复制原文、人物或数据。"
+        }
+      ],
+      "reviewNotes": "蓝红双色与中文衬线字带来印刷气质，纸纹和细线物件清楚，画面较克制。",
+      "correction": {
+        "version": 2,
+        "input": "initial-v1/body-duotone-print.png",
+        "prompt": "prompts/body-duotone-print-v2-no-avatars.md",
+        "reason": "移除第04项头像符号，换成抽象模块。",
+        "initialStatus": "superseded_needs_review"
+      }
+    },
+    {
+      "id": "05",
+      "theme": "body-crayon",
+      "name": "颗粒蜡笔插画",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "body-crayon.png",
+      "prompt": "prompts/body-crayon.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "cebefff5a9bc2f68f5dc2e029159c3fce131493d21034afcefcf5b913f3dce3f",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "body-checklist-new-styles-01",
+      "references": [
+        {
+          "file": "references/body-crayon.png",
+          "role": "仅控制字形、笔触、配色和材质，不复制原文、人物或数据。"
+        }
+      ],
+      "reviewNotes": "蜡笔颗粒和物件插画鲜明；彩色分区较丰富，标题及装饰的边缘留白略紧。",
+      "correction": {
+        "version": 2,
+        "input": "initial-v1/body-crayon.png",
+        "prompt": "prompts/body-crayon-v2-no-avatars.md",
+        "reason": "移除第04项头像符号，换成抽象模块。",
+        "initialStatus": "superseded_needs_review"
+      }
+    },
+    {
+      "id": "06",
+      "theme": "body-digital-notes",
+      "name": "清爽数字手绘注解",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "body-digital-notes.png",
+      "prompt": "prompts/body-digital-notes.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "7e0236db47e2c47c08ed464d30125f748bfe4bf51e63e3cc30fcc2b0d9768b0f",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "body-checklist-new-styles-01",
+      "references": [
+        {
+          "file": "references/body-digital-notes.png",
+          "role": "仅控制字形、笔触、配色和材质，不复制原文、人物或数据。"
+        }
+      ],
+      "reviewNotes": "手写标题、蓝黄批注和物件说明明确；批注较多、整体较活跃，适合后续测试更复杂内容。",
+      "correction": {
+        "version": 2,
+        "input": "initial-v1/body-digital-notes.png",
+        "prompt": "prompts/body-digital-notes-v2-no-avatars.md",
+        "reason": "移除第04项头像符号；数字手绘版另删除插图内额外文字。",
+        "initialStatus": "superseded_needs_review"
+      }
+    },
+    {
+      "id": "07",
+      "theme": "body-paper-collage",
+      "name": "撕纸手绘拼贴",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "body-paper-collage.png",
+      "prompt": "prompts/body-paper-collage.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "21ee746e61c2313da2c9a709dbd3ad27df79aa314d61335d2910267f5423a9b1",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "body-checklist-new-styles-01",
+      "references": [
+        {
+          "file": "references/body-paper-collage.png",
+          "role": "仅控制字形、笔触、配色和材质，不复制原文、人物或数据。"
+        }
+      ],
+      "reviewNotes": "撕纸边缘、粗笔字、轻阴影和纸片分组明确；视觉较浓，实际长文需控制模块与图形大小。",
+      "correction": {
+        "version": 2,
+        "input": "initial-v1/body-paper-collage.png",
+        "prompt": "prompts/body-paper-collage-v2-no-avatars.md",
+        "reason": "移除第04项头像符号，换成抽象模块。",
+        "initialStatus": "superseded_needs_review"
+      }
+    },
+    {
+      "id": "08",
+      "theme": "body-chalkboard",
+      "name": "黑板粉笔",
+      "title": "提需求前的五项清单",
+      "layout": "checklist",
+      "file": "body-chalkboard.png",
+      "prompt": "prompts/body-chalkboard.md",
+      "actualSize": [
+        1086,
+        1448
+      ],
+      "sha256": "2f42897f3aa16751099559f19e68e9259a52c1da98dbb710ebf295d6194527ee",
+      "status": "reviewed",
+      "generationTool": "built-in imagegen",
+      "sourceRun": "body-checklist-new-styles-01",
+      "references": [
+        {
+          "file": "references/body-chalkboard.png",
+          "role": "仅控制字形、笔触、配色和材质，不复制原文、人物或数据。"
+        }
+      ],
+      "reviewNotes": "深色板面、浅色中文和粉笔纹理形成明显风格；当前是清单样张，原理关系图仍待另测。",
+      "correction": {
+        "version": 2,
+        "input": "initial-v1/body-chalkboard.png",
+        "prompt": "prompts/body-chalkboard-v2-no-avatars.md",
+        "reason": "移除第04项头像符号，换成抽象模块。",
+        "initialStatus": "superseded_needs_review"
+      }
+    }
+  ]
+}

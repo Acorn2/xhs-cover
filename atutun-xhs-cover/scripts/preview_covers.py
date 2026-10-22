@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check generated image-post covers offline without changing their source PNGs."""
+"""Check generated cover and body images offline without changing their source PNGs."""
 import argparse
 import html
 import json
@@ -11,6 +11,8 @@ import struct
 import sys
 
 PRESETS = Path(__file__).resolve().parents[1] / "references/platform-presets.json"
+BODY_THEMES = ("body-clean", "body-sketch", "body-editorial", "body-duotone-print",
+               "body-crayon", "body-digital-notes", "body-paper-collage", "body-chalkboard")
 
 
 def numbers(value, length, name):
@@ -78,8 +80,8 @@ def load_request(manifest, presets):
         placement = item.get("placement")
         if not isinstance(placement, str) or placement not in presets["placements"]:
             raise ValueError(f"Unknown placement: {placement}")
-        if item.get("style") not in [f"{x:02}" for x in range(1, 13)]:
-            raise ValueError("style must be a string from 01 to 12")
+        if item.get("style") not in [f"{x:02}" for x in range(1, 13)] + list(BODY_THEMES):
+            raise ValueError("style must be 01 to 12 or one of: " + ", ".join(BODY_THEMES))
         if not isinstance(item.get("title"), str) or not item["title"].strip():
             raise ValueError("Each variant needs its expected title")
         image = item.get("image")
@@ -111,7 +113,7 @@ def inspect(item, preset):
     if abs(source_ratio / target_ratio - 1) > 0.015:
         warnings.append("原图与目标比例不同，当前仅做裁切检查，需要重新布局")
     if not item["importantRegions"]:
-        warnings.append("没有重要区域标注，尚未检查标题或脸部")
+        warnings.append("没有重要区域标注，尚未检查标题、正文或主体")
     views = []
     for index, view in enumerate(preset["previews"]):
         ratio = view["ratio"][0] / view["ratio"][1]
@@ -160,9 +162,9 @@ def render(items, reports, presets, topic):
         note = warnings or "<li>结构检查未发现上述风险，仍需目视复核</li>"
         sections.append(f'<section><h2>{escape(preset["name"])} · 风格{item["style"]}</h2><p>{escape(item["title"])} · 原图{item["sourceSize"][0]}×{item["sourceSize"][1]} · 待目视复核</p><div class="views"><figure><figcaption>原图（完整显示）</figcaption><img class="original" src="{asset}" alt="原图"></figure>{"".join(views)}</div><ul>{note}</ul></section>')
     return """<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>图文封面展示检查</title><style>
+<title>封面与正文图展示检查</title><style>
 *{box-sizing:border-box}body{margin:0;background:#f3f4f6;color:#18202b;font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:1440px;padding:28px;margin:auto}h1{font-size:28px}h2{font-size:22px}section{background:white;border:1px solid #d4d8df;margin:24px 0;padding:20px;border-radius:8px}.views{display:flex;flex-wrap:wrap;gap:24px;align-items:start}figure{margin:0;width:260px;max-width:100%}figcaption{margin-bottom:8px;font-weight:600}.original{display:block;width:100%;height:260px;object-fit:contain;background:#eef0f3}.frame,.thumb{position:relative;overflow:hidden;background:#dce0e5}.frame{width:100%}.thumb{width:104px;margin-top:12px}.frame img,.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.safe,.mask{position:absolute;pointer-events:none}.safe{border:2px dashed #21b868}.mask{background:#d8474755;font-size:10px;color:#841f28;overflow:hidden}li{margin:4px 0}header p{max-width:80ch}footer{color:#626c7a}@media(max-width:600px){main{padding:14px}section{padding:14px}.views{gap:18px}figure{width:100%;max-width:320px}}
-</style><main><header><h1>""" + escape(str(topic)) + """ · 图文封面展示检查</h1><p>这是生图后的检查工具，不负责平台策略或独立生图。绿框为建议基础边距，小图检查可读性；默认3:4整图，不做跨平台裁切。原图未修改，未执行OCR，所有结果均待目视复核。</p></header>""" + "".join(sections) + "<footer>预设更新：" + escape(presets["updated"]) + "</footer></main></html>"
+</style><main><header><h1>""" + escape(str(topic)) + """ · 封面与正文图展示检查</h1><p>这是生图后的检查工具，不负责平台策略或独立生图。绿框为建议基础边距，小图检查层级；正文可读性还需查看原图与手机阅读尺寸。默认3:4整图，不做跨平台裁切。原图未修改，未执行OCR，所有结果均待目视复核。</p></header>""" + "".join(sections) + "<footer>预设更新：" + escape(presets["updated"]) + "</footer></main></html>"
 
 
 def build(manifest, out_dir):

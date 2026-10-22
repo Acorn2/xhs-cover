@@ -1,4 +1,25 @@
-# 封面模板示例
+# 封面与正文视觉示例
+
+## 正文视觉风格8款 · 第一套
+
+[打开八款总览](body-styles-set-01/index.html) / [独立目录与说明](body-styles-set-01/README.md) / [生成与复核记录](body-styles-set-01/manifest.json)
+
+8款使用同一份《提需求前的五项清单》文案，均为1086×1448（3:4）小红书正文示例，默认无人物。新增五款采用已局部移除头像符号的修正版；所有最终原图均逐字节复制保存，原 `output/` 生成目录和历史封面示例保留。
+
+| 编号 | 正文主题 | 原图 |
+| --- | --- | --- |
+| 01 | 清爽文档 · v3 | [PNG](body-styles-set-01/revisions/02-clean-editorial/body-clean-v3.png) |
+| 02 | 手绘讲义 | [PNG](body-styles-set-01/body-sketch.png) |
+| 03 | 杂志图解 · v2 | [PNG](body-styles-set-01/revisions/02-clean-editorial/body-editorial-v2.png) |
+| 04 | 清透双色文艺印刷 | [PNG](body-styles-set-01/body-duotone-print.png) |
+| 05 | 颗粒蜡笔插画 | [PNG](body-styles-set-01/body-crayon.png) |
+| 06 | 清爽数字手绘注解 | [PNG](body-styles-set-01/body-digital-notes.png) |
+| 07 | 撕纸手绘拼贴 | [PNG](body-styles-set-01/body-paper-collage.png) |
+| 08 | 黑板粉笔 | [PNG](body-styles-set-01/body-chalkboard.png) |
+
+目录内保存源文、生成与修正提示词、实际风格参考、编辑初稿和复核说明，使用相对路径，可整体另存。用户此前偏好手绘讲义，并对新增五款给予正面反馈；当前只覆盖单页清单，不代表抖音适配、所有布局组合或平台上传验收完成。
+
+清爽文档与杂志图解随后按用户反馈重新设计，[新旧对照](body-styles-set-01/revisions/02-clean-editorial/index.html)保留原图。总览及上表展示用户已确认采用的清爽文档v3与杂志图解v2；另六款保持不变，未删除任何主题。
 
 ## 当前已确认的视觉标准
 

@@ -82,7 +82,7 @@ class BuildTests(unittest.TestCase):
         changes = [{"placement": "wechat-channels"}, {"placement": "douyin-video"},
                    {"placement": "wechat-head"}, {"placement": "wechat-square"}, {"image": "missing.png"},
                    {"id": "../escape"}, {"position": [1.1, 0.5]},
-                   {"style": "13"}, {"image": "https://example.com/image.png"},
+                   {"style": "13"}, {"style": "body-unknown"}, {"image": "https://example.com/image.png"},
                    {"image": str(IMAGE.with_suffix(".jpg"))},
                    {"importantRegions": [{"label": "标题", "box": [0, 0, 2, 1]}]}]
         for i, change in enumerate(changes):
@@ -119,6 +119,49 @@ class BuildTests(unittest.TestCase):
         broken.write_bytes(b"not a png")
         with self.assertRaises(ValueError):
             preview.png_size(broken)
+
+    def test_mixed_cover_and_body_pages_preserve_order_and_annotations(self):
+        original = IMAGE.read_bytes()
+        for index, theme in enumerate(("body-clean", "body-sketch", "body-editorial"), 1):
+            self.data["variants"].append({
+                "id": f"body-{index:02}", "placement": "douyin-note", "style": theme,
+                "title": f"正文第{index}页", "image": str(IMAGE),
+                "importantRegions": [{"label": "正文", "box": [0.1, 0.2, 0.8, 0.6]}],
+            })
+        # A cover PNG is only a geometry fixture, not a generated body-image example.
+        self.write()
+        report = preview.build(self.manifest, self.root / "series")
+        self.assertEqual([item["id"] for item in report["variants"]],
+                         ["sample", "body-01", "body-02", "body-03"])
+        for result in report["variants"][1:]:
+            self.assertEqual(result["status"], "needs_review")
+            self.assertFalse(result["needs_relayout"])
+            self.assertEqual(result["previews"][0]["crop"], [0, 0, 1, 1])
+            self.assertEqual((self.root / f'series/assets/{result["id"]}.png').read_bytes(), original)
+        document = (self.root / "series/index.html").read_text()
+        self.assertLess(document.index("正文第1页"), document.index("正文第2页"))
+        self.assertEqual(IMAGE.read_bytes(), original)
+
+    def test_new_body_themes_work_without_a_cover_on_both_platforms(self):
+        for theme in ("body-duotone-print", "body-crayon", "body-digital-notes",
+                      "body-paper-collage", "body-chalkboard"):
+            for placement in ("xhs-note", "douyin-note"):
+                with self.subTest(theme=theme, placement=placement):
+                    data = copy.deepcopy(self.data)
+                    data["variants"][0].update({
+                        "style": theme, "placement": placement,
+                        "importantRegions": [{"label": "正文", "box": [0.1, 0.2, 0.8, 0.6]}],
+                    })
+                    self.write(data)
+                    out = self.root / f"{theme}-{placement}"
+                    report = preview.build(self.manifest, out)
+                    result = report["variants"][0]
+                    self.assertEqual(result["style"], theme)
+                    self.assertEqual(result["placement"], placement)
+                    self.assertEqual(result["status"], "needs_review")
+                    self.assertFalse(result["needs_relayout"])
+                    self.assertEqual(result["previews"][0]["crop"], [0, 0, 1, 1])
+                    self.assertIn(theme, (out / "index.html").read_text())
 
 
 if __name__ == "__main__":

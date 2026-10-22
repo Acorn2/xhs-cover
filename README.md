@@ -1,6 +1,6 @@
 # atutun-xhs-cover
 
-面向**小红书图文与抖音图文**的封面策划 Skill，包含 **12 种视觉风格**。同一份内容先按两个平台分别确定标题、信息密度、视觉锚点与构图，再输出独立生图提示词；展示检查仅用于生图后的验收。
+面向**小红书图文与抖音图文**的封面与正文图策划 Skill。封面包含 **12 种视觉风格**；正文独立提供 **8 种视觉主题 × 6 种内容布局**，默认采用 **`body-sketch` 手绘讲义**、无人物，也支持用户选择其他正文风格。同一份内容按平台分别策划，再输出逐图完整提示词；展示检查仅用于生图后的验收。
 
 保留名称 `atutun-xhs-cover` 和原安装方式。原八款图片与提示词仍可复用，新流程不再要求固定八轮问答或所有封面都露脸。
 
@@ -15,9 +15,95 @@
 
 **同为3:4也要分别设计与生成。** 例如同一资料整理主题，小红书可以呈现“流程＋三个步骤”，抖音可以呈现“资料太乱的问题＋清单结果”，不能裁切小红书成品充当抖音版。
 
-这些是可调整的设计策略，非平台唯一审美、上传规格或算法规律。当前不处理抖音视频、公众号、视频号及朋友圈，后续范围见 [ROADMAP.md](ROADMAP.md)。详细规则见 [两平台生成策略](atutun-xhs-cover/references/platform-adaptation.md)。
+上表是封面策略；正文另按每页问题、信息量和阅读顺序设计，不直接套用封面的短标题或辅助标签预算。这些是可调整的设计策略，非平台唯一审美、上传规格或算法规律。当前不处理抖音视频、公众号、视频号及朋友圈，后续范围见 [ROADMAP.md](ROADMAP.md)。详细规则见 [两平台生成策略](atutun-xhs-cover/references/platform-adaptation.md)。
 
-## 模板效果
+## 正文模板与制作范围
+
+支持**只做封面、只做正文、封面加正文**。旧调用未说明范围时继续只做封面，不自动扩张为整组。
+
+封面与正文独立选择模板、配色和材质。正文默认不出现人物、头像、吉祥物或人物贴纸，包括总结页；不继承 Hresh 封面的人物母版、蓝黄大字或摄影背景。一组正文统一主题，不同页按内容选布局。
+
+**未指定正文风格时，直接采用 `body-sketch` 手绘讲义。** 用户可以用下表中的主题 ID 或中文名称指定其他风格，例如“正文使用 `body-clean`”或“正文改成黑板粉笔风”；用户的明确选择优先，不再套用默认主题。此默认仅用于正文，封面仍单独选型。
+
+| 正文主题 ID | 主题 | 适合内容 |
+| --- | --- | --- |
+| `body-clean` | 清爽文档：白底、小页签、克制标题、物件线图解与浅冰蓝分区 | 操作教程、工具说明、截图批注 |
+| `body-sketch` | **手绘讲义（默认）**：米白底、工整正文、手绘线条与箭头 | 原理、流程、方法论；无人物 |
+| `body-editorial` | 杂志图解：宋黑搭配、暖纸苔绿、不等宽编辑网格与物件主图 | 观点、案例、产品介绍 |
+| `body-duotone-print` | 清透双色文艺印刷：轻纸面、蓝红双色、疏朗字形与细线物件 | 方法论、时间线、关系解释 |
+| `body-crayon` | 颗粒蜡笔插画：温暖纸面、颗粒物件插画、清晰手写字 | 科普、分类与过程说明 |
+| `body-digital-notes` | 清爽数字手绘注解：白底黑字、蓝黄批注、物件比喻 | 工作流、操作注解、问题拆解 |
+| `body-paper-collage` | 撕纸手绘拼贴：撕边纸片、粗笔小标题、分组与克制叠层 | 避坑、模块拆解、方案比较 |
+| `body-chalkboard` | 黑板粉笔：深色板面、浅色板书、彩色粉笔关系线 | 原理、系统结构、关系与流程 |
+
+六种布局为：**观点解释 `explanation`、步骤流程 `steps`、截图批注 `screenshot`、双栏对比 `comparison`、清单卡片 `checklist`、关系图解 `relationship`**。主题决定视觉，布局决定信息组织；各主题的配色、结构、提示词片段与布局规则见 [正文模板](atutun-xhs-cover/references/body-templates.md)。
+
+新增五套的参考图、字体、笔触、材质、解释图形与竖版重排规范见 [扩展正文风格](atutun-xhs-cover/references/body-styles-extended.md)。参考图随 Skill 安装，仅借鉴视觉特征，不复制其中的人物、头像、原文和数据；横图须按内容重新拆页与设计，不能直接裁成3:4。
+
+正文流程为：**原文与证据 → 逐页文案 → 独立主题与逐页布局 → 代表性正文样张 → 后续页面 → 逐字与连续阅读检查**。真实截图缺失时不伪造界面；主题参考使用正文样张，不默认使用封面。详见 [正文制作流程与提示词示例](atutun-xhs-cover/references/body-images.md)。
+
+八种正文主题的最终样图已统一保存到 [examples/body-styles-set-01](examples/body-styles-set-01/README.md)，使用同一份《提需求前的五项清单》文案，均为1086×1448、3:4、无人物，已在生成轮次逐张目视核对。Hresh 此前表达了对手绘讲义的偏好，并对新增五款给予正面反馈；手绘标题大小按内容判断，不机械缩小。
+
+示例目录包含8款当前样图、生成与修正提示词、实际参考素材、版本历史和[生成清单](examples/body-styles-set-01/manifest.json)，不依赖原生成目录即可查看。新增五款展示局部移除头像符号后的版本，原 `output/` 记录保留。清爽文档与杂志图解已按用户反馈重新设计，总览展示[当前版本与新旧对照](examples/body-styles-set-01/revisions/02-clean-editorial/index.html)，旧图保留；用户已确认采用清爽文档v3与杂志图解v2，作为两套主题的当前版本；清爽版保留较强功能性。蜡笔版边缘留白略紧、拼贴版视觉较浓，详见[复核说明](examples/body-styles-set-01/review.md)。其他布局、完整系列及平台上传展示仍待验证，8×6组合不代表48张已完成或已验证的图片。
+
+## 正文视觉风格效果（8款）
+
+[打开八款总览](examples/body-styles-set-01/index.html) · [示例说明与提示词入口](examples/body-styles-set-01/README.md) · [测试文案](examples/body-styles-set-01/source.md)
+
+点击图片查看原图。以下均为小红书正文的单页清单视觉示例；字体、材质与图形表达可独立选择，封面不必采用相同主题。
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>01 · 清爽文档 · v3</h3>
+      <a href="examples/body-styles-set-01/revisions/02-clean-editorial/body-clean-v3.png"><img src="examples/body-styles-set-01/revisions/02-clean-editorial/body-clean-v3.png" alt="清爽文档v3：提需求前的五项清单" width="420"></a>
+      <p>单行克制标题、蓝色小页签、物件线图解和浅冰蓝分区，已目视核对并获用户确认采用。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>02 · 手绘讲义</h3>
+      <a href="examples/body-styles-set-01/body-sketch.png"><img src="examples/body-styles-set-01/body-sketch.png" alt="手绘讲义正文示例：提需求前的五项清单" width="420"></a>
+      <p>默认正文主题：米白纸纹、清晰手写字、蓝色圈线与浅橙笔刷；可按需求选择其他主题。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>03 · 杂志图解 · v2</h3>
+      <a href="examples/body-styles-set-01/revisions/02-clean-editorial/body-editorial-v2.png"><img src="examples/body-styles-set-01/revisions/02-clean-editorial/body-editorial-v2.png" alt="杂志图解v2：提需求前的五项清单" width="420"></a>
+      <p>宋黑搭配、暖纸苔绿、不等宽编辑网格与物件主图，已目视核对并获用户确认采用。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>04 · 清透双色文艺印刷</h3>
+      <a href="examples/body-styles-set-01/body-duotone-print.png"><img src="examples/body-styles-set-01/body-duotone-print.png" alt="清透双色文艺印刷正文示例：提需求前的五项清单" width="420"></a>
+      <p>蓝红双色、中文衬线字与细线物件，保留轻印刷质感和留白。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>05 · 颗粒蜡笔插画</h3>
+      <a href="examples/body-styles-set-01/body-crayon.png"><img src="examples/body-styles-set-01/body-crayon.png" alt="颗粒蜡笔插画正文示例：提需求前的五项清单" width="420"></a>
+      <p>暖纸面、蜡笔颗粒和彩色物件插画，适合分类、过程与科普说明。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>06 · 清爽数字手绘注解</h3>
+      <a href="examples/body-styles-set-01/body-digital-notes.png"><img src="examples/body-styles-set-01/body-digital-notes.png" alt="清爽数字手绘注解正文示例：提需求前的五项清单" width="420"></a>
+      <p>白底手写字、蓝黄批注与物件图解，适合工作流和问题拆解。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>07 · 撕纸手绘拼贴</h3>
+      <a href="examples/body-styles-set-01/body-paper-collage.png"><img src="examples/body-styles-set-01/body-paper-collage.png" alt="撕纸手绘拼贴正文示例：提需求前的五项清单" width="420"></a>
+      <p>撕边纸片、粗笔标题和轻微叠层，用独立纸片组织信息分组。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>08 · 黑板粉笔</h3>
+      <a href="examples/body-styles-set-01/body-chalkboard.png"><img src="examples/body-styles-set-01/body-chalkboard.png" alt="黑板粉笔正文示例：提需求前的五项清单" width="420"></a>
+      <p>深色板面、浅色板书和粉笔物件，适合原理、结构与关系说明。</p>
+    </td>
+  </tr>
+</table>
+
+## 封面模板效果
 
 ### 当前已确认标准
 
@@ -121,11 +207,33 @@ $atutun-xhs-cover
 可以复用同一风格与配色，但不要裁切同一成品代替两个版本。
 ```
 
+只做正文时，不指定风格即使用默认的 `body-sketch` 手绘讲义：
+
+```text
+$atutun-xhs-cover
+这是测试文档：[粘贴正文或提供文件路径]
+只制作小红书正文图片，不做封面，正文不要人物。
+按内容拆页并选择合适布局，直接生成。
+```
+
+选择其他正文风格时，在请求中明确主题 ID 或中文名称即可，例如改用清爽文档：
+
+```text
+$atutun-xhs-cover
+这是我的文章：[粘贴正文或提供文件路径]
+只制作小红书正文图片，不做封面。
+正文使用 body-clean 清爽文档主题，按内容拆页，直接生成。
+```
+
+整组制作时，可分别指定“封面使用内置虚拟人物与01风格；正文使用杂志图解主题，无人物”。比较主题时可指定“用同一页、同一文案和布局，分别制作三种正文主题样张”，不必先生成三套完整正文。
+
+也可以直接指定新增风格，例如“正文使用清爽数字手绘注解 `body-digital-notes`，按内容组织截图批注或流程，默认无人物”；“正文使用黑板粉笔 `body-chalkboard`，用关系图解释原理”。只写引入风格时更新模板，不自动生成图片；明确要求生成时再制作所选版本。
+
 ## 使用流程
 
-只需要五类信息：**内容、平台版位、主体、素材、偏好**。从当前消息提取已知信息，未指定的样式由 Skill 推荐；仅缺少会改变结果的信息时补问。未指定平台时会说明默认小红书图文，无人物方案不强迫上传照片。
+先确定制作范围，再提取五类信息：**内容、平台版位、主体、素材、偏好**。从当前消息提取已知信息；正文未指定风格时采用 `body-sketch`，指定时使用用户选择的主题，封面未指定风格时由 Skill 推荐。仅缺少会改变结果的信息时补问。未指定平台时会说明默认小红书图文，正文不询问人物照片。
 
-主流程是：**内容分析 → 两平台分别制定生成策略 → 组合风格 → 各自完整提示词 → 分别生图 → 事后展示检查**。复用人物身份与品牌配色；用户锁定标题时保留原文，通过主体与辅助信息安排体现区别，不为增加点击虚构数字或效果。
+封面流程是：**内容分析 → 两平台分别制定生成策略 → 组合风格 → 各自完整提示词 → 分别生图 → 事后展示检查**。封面可复用人物身份与品牌配色；正文另走上述拆页与样张流程。用户锁定文案时保留原文，不为增加点击虚构数字或效果。
 
 这个 Skill 提供策划、提示词与预览脚本，不包含独立生图服务。用户要求图片时，由当前环境可用的图片工具制作所选版本；只要求提示词时不会自动生图或发布。
 
@@ -163,14 +271,27 @@ python3 atutun-xhs-cover/scripts/preview_covers.py \
 
 </details>
 
+## 最终图片顺序与打包
+
+实际成品交付使用独立的 [交付清单与脚本](atutun-xhs-cover/references/final-delivery.md)。每个平台单独选择最终版，明确阅读顺序及计划正文数量；脚本拒绝重复封面、封面不在首张、页序重复或断号、正文缺页、重复图片及未标记为最终且已复核的文件。预览工具仍允许多候选比较，不用预览列表代替最终发布顺序。
+
+```bash
+python3 atutun-xhs-cover/scripts/package_images.py \
+  --manifest output/<topic-slug>/delivery-input.json \
+  --out-dir output/<topic-slug>/final
+```
+
+成功输出 `01-cover.png`、`02-body-01.png` 等统一编号原图、按同一顺序写入的ZIP、每张只显示一次的HTML总览，以及JSON/Markdown顺序清单。只做正文从 `01-body-01.png` 开始；源图和历史版本保留，输出目录必须不存在。最终回复按清单标清“第N张·封面/正文NN”，不让用户从散图推测顺序。脚本不控制生图工具自动展示的中间消息，也不执行视觉或上传验证。
+
 ## 视觉与事实约定
 
 - 当前两平台均采用3:4，风格不绑定平台；生成目标、标题与信息预算分别决定。
+- 正文独立选主题，每页按内容选布局，默认无人物；封面的身份、配色与材质不自动传入正文。
 - 01–08的通用模板使用浅黄/白色基础字效；Hresh 默认以已确认效果图的亮蓝/明黄替换原配色。09–12使用自己的视觉结构，人物与品牌偏好不强制改变其信息层级。
 - 真人身份来自参考照，虚拟人物身份与画风来自已确认母版；不把虚拟人物写实化，不索要真人照来维持虚拟身份。无人物方案可用产品、环境和概念图，装饰服务于主题。
 - 封面默认不添加账号名称、署名、账号水印或个人品牌Logo；使用固定人物不意味着在图片上写账号名称，用户明确要求时才添加。
 - “5款”“实测”“零基础”“效率翻倍”等表达须有材料依据；分析图表不编造数值或评分。
-- 两平台分别保存生成方案和原图，检查视图不冒充成品。中文标题逐字核对，含标点。
+- 两平台分别保存页计划、完整提示词和原图，检查视图不冒充成品。中文标题、正文、图注逐字核对，含标点；流程与关系图核对箭头方向和条件。
 - 可编辑文字需交付真实文字图层或独立文案与布局记录；当前脚本不合成文字、不导出最终位图。
 
 具体规则见 [Skill 入口](atutun-xhs-cover/SKILL.md)、[原八款视觉库](atutun-xhs-cover/references/styles-atutun.md) 和 [第01款历史示例](atutun-xhs-cover/references/style-01-ai-tools.md)。
@@ -190,10 +311,14 @@ python3 atutun-xhs-cover/scripts/preview_covers.py \
 │   ├── assets/hresh-character-black-tee.png # 当前默认黑色T恤人物母版
 │   ├── assets/hresh-cover-approved.png # 用户已确认的蓝黄字体效果参考
 │   ├── assets/hresh-character.png # 原蓝黄母版，保留历史引用
-│   ├── references/               # 12种风格、平台预设与预览说明
-│   └── scripts/preview_covers.py  # Python 标准库展示检查
+│   ├── assets/body-style-references/ # 五张新增风格参考与偏好的手绘讲义样张
+│   ├── references/               # 12种封面风格、正文8主题/6布局、平台预设与预览说明
+│   └── scripts/                  # Python 标准库脚本
+│       ├── preview_covers.py     # 多候选展示检查
+│       └── package_images.py     # 唯一最终版、阅读顺序与原图打包
 ├── tests/                       # 预览几何与输入/输出保护
-└── examples/                    # 八款原图、生成记录及平台预览
+└── examples/                    # 封面历史示例、正文8款与可复用生成输入
+    └── body-styles-set-01/      # 正文原图、总览、提示词、参考与复核记录
 ```
 
 `examples/` 供浏览和对照，不需要复制到 skills 目录。历史八款示例的真人与风格参考原图未包含在仓库中；Hresh 当前人物母版与已确认效果参考均保存在 `atutun-xhs-cover/assets/`，随 Skill 一起安装，不依赖 `output/` 或临时附件。其他人物请提供自己的参考图。更多记录见 [示例说明](examples/README.md)。
