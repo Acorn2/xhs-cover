@@ -2,8 +2,10 @@ import copy
 import importlib.util
 import json
 from pathlib import Path
+import re
 import tempfile
 import unittest
+from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("preview", ROOT / "atutun-xhs-cover/scripts/preview_covers.py")
@@ -68,7 +70,7 @@ class BuildTests(unittest.TestCase):
         original = IMAGE.read_bytes()
         report = preview.build(self.manifest, self.root / "out")
         self.assertEqual(IMAGE.read_bytes(), original)
-        self.assertEqual((self.root / "out/assets/sample.png").read_bytes(), original)
+        self.assertFalse((self.root / "out/assets").exists())
         self.assertTrue(report["variants"][0]["needs_relayout"])
         self.assertTrue(any("标题超出建议安全框" in x for x in report["variants"][0]["warnings"]))
         document = (self.root / "out/index.html").read_text()
@@ -77,6 +79,22 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(json.loads((self.root / "out/report.json").read_text()), report)
         with self.assertRaises(ValueError):
             preview.build(self.manifest, self.root / "out")
+
+    def test_preview_links_original_with_spaces_and_url_characters_without_copying(self):
+        image = self.root / "中文 #1 & ?.png"
+        image.write_bytes(IMAGE.read_bytes())
+        self.data["variants"][0]["image"] = image.name
+        self.write()
+        out = self.root / "preview"
+        preview.build(self.manifest, out)
+        document = (out / "index.html").read_text()
+        urls = re.findall(r'<img[^>]+src="([^"]+)"', document)
+        self.assertTrue(urls)
+        for url in urls:
+            self.assertNotIn("#", url)
+            self.assertNotIn("?", url)
+            self.assertEqual((out / unquote(url)).resolve(), image)
+        self.assertEqual({p.name for p in out.iterdir()}, {"index.html", "report.json"})
 
     def test_rejects_bad_input_before_creating_output(self):
         changes = [{"placement": "wechat-channels"}, {"placement": "douyin-video"},
@@ -137,9 +155,11 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(result["status"], "needs_review")
             self.assertFalse(result["needs_relayout"])
             self.assertEqual(result["previews"][0]["crop"], [0, 0, 1, 1])
-            self.assertEqual((self.root / f'series/assets/{result["id"]}.png').read_bytes(), original)
         document = (self.root / "series/index.html").read_text()
         self.assertLess(document.index("正文第1页"), document.index("正文第2页"))
+        self.assertFalse((self.root / "series/assets").exists())
+        for url in re.findall(r'<img[^>]+src="([^"]+)"', document):
+            self.assertEqual((self.root / "series" / unquote(url)).resolve(), IMAGE)
         self.assertEqual(IMAGE.read_bytes(), original)
 
     def test_new_body_themes_work_without_a_cover_on_both_platforms(self):

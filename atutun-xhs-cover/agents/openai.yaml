@@ -1,4 +1,4 @@
 interface:
   display_name: "小红书 / 抖音封面与正文图"
-  short_description: "策划小红书与抖音图文，封面12种风格、正文8种主题与6种布局，独立选型且正文无人物"
-  default_prompt: "Use $atutun-xhs-cover to plan covers, character-free body image series, or complete image posts for Xiaohongshu and Douyin, choosing cover and body templates independently."
+  short_description: "策划小红书与抖音图文，Hresh封面须保留虚拟人物；正文默认无人物手绘讲义，整组附标题、短正文与标签"
+  default_prompt: "Use $atutun-xhs-cover to create an ordered image post for Xiaohongshu or Douyin, keep the confirmed virtual character on Hresh covers unless the user explicitly requests no character or a replacement, choose body styles independently, and include publication titles, a short post body, and relevant tags."

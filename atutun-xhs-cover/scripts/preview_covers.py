@@ -4,11 +4,12 @@ import argparse
 import html
 import json
 import math
+import os
 from pathlib import Path
 import re
-import shutil
 import struct
 import sys
+from urllib.parse import quote
 
 PRESETS = Path(__file__).resolve().parents[1] / "references/platform-presets.json"
 BODY_THEMES = ("body-clean", "body-sketch", "body-editorial", "body-duotone-print",
@@ -146,7 +147,7 @@ def render(items, reports, presets, topic):
     sections = []
     for item, report in zip(items, reports):
         preset = presets["placements"][item["placement"]]
-        asset = f'assets/{item["id"]}.png'
+        asset = item["_preview_url"]
         position = f'{item["position"][0] * 100}% {item["position"][1] * 100}%'
         views = []
         for index, view in enumerate(report["previews"]):
@@ -174,11 +175,11 @@ def build(manifest, out_dir):
     presets = json.loads(PRESETS.read_text(encoding="utf-8"))
     data, items = load_request(manifest, presets)
     reports = [inspect(item, presets["placements"][item["placement"]]) for item in items]
+    for item in items:
+        item["_preview_url"] = quote(Path(os.path.relpath(item["_source"], out_dir)).as_posix(), safe="/")
     document = render(items, reports, presets, data.get("topic", "封面"))
     # Validate every input before creating any output.
-    (out_dir / "assets").mkdir(parents=True)
-    for item in items:
-        shutil.copyfile(item["_source"], out_dir / "assets" / f'{item["id"]}.png')
+    out_dir.mkdir(parents=True)
     report = {"schemaVersion": 1, "status": "needs_review", "presetUpdated": presets["updated"],
               "notice": presets["notice"], "variants": reports}
     (out_dir / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
